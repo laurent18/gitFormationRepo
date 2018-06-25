@@ -48,3 +48,80 @@ function enregistrer_scores()
                                + "!;expires=" + date.toUTCString() + ";";
     parent.document.cookie = daedalus_score;
    }
+
+/********************************************************************************/     
+function charger()
+   {
+    daedalus_cookie = parent.document.cookie;
+    if (daedalus_cookie.length != 0)
+       {          
+        pos_daeda_gce_deb  = daedalus_cookie.indexOf("gce:");
+        pos_daeda_gce_fin  = daedalus_cookie.indexOf("x:", pos_daeda_gce_deb);
+        images_attr[0]  = daedalus_cookie.substring(pos_daeda_gce_deb + 4,pos_daeda_gce_fin - 2);
+        images_attr[1]  = daedalus_cookie.substring(pos_daeda_gce_deb + 5,pos_daeda_gce_fin - 1);
+        images_attr[2]  = daedalus_cookie.substring(pos_daeda_gce_deb + 6,pos_daeda_gce_fin);
+    
+        pos_daeda_x_deb  = daedalus_cookie.indexOf("x:");
+        pos_daeda_x_fin = daedalus_cookie.indexOf("y:", pos_daeda_x_deb);
+        position_x = parseInt(daedalus_cookie.substring(pos_daeda_x_deb + 2,pos_daeda_x_fin));
+      
+        pos_daeda_y_deb  = daedalus_cookie.indexOf("y:");
+        pos_daeda_y_fin = daedalus_cookie.indexOf("xp:", pos_daeda_y_deb);
+        position_y = parseInt(daedalus_cookie.substring(pos_daeda_y_deb + 2,pos_daeda_y_fin));
+      
+        pos_daeda_xp_deb  = daedalus_cookie.indexOf("xp:");
+        pos_daeda_xp_fin = daedalus_cookie.indexOf("yp:", pos_daeda_xp_deb);
+        position_x_p = parseInt(daedalus_cookie.substring(pos_daeda_xp_deb + 3,pos_daeda_xp_fin));
+      
+        pos_daeda_yp_deb  = daedalus_cookie.indexOf("yp:");
+        pos_daeda_yp_fin = daedalus_cookie.indexOf("vi:", pos_daeda_yp_deb);
+        position_y_p = parseInt(daedalus_cookie.substring(pos_daeda_yp_deb + 3,pos_daeda_yp_fin));
+      
+        pos_daeda_vi_deb  = daedalus_cookie.indexOf("vi:");
+        pos_daeda_vi_fin = daedalus_cookie.indexOf("fo:", pos_daeda_vi_deb);
+        vital = parseInt(daedalus_cookie.substring(pos_daeda_vi_deb + 3,pos_daeda_vi_fin));
+      
+        pos_daeda_fo_deb  = daedalus_cookie.indexOf("fo:");
+        pos_daeda_fo_fin = daedalus_cookie.indexOf("nb:", pos_daeda_fo_deb);
+        force = parseInt(daedalus_cookie.substring(pos_daeda_fo_deb + 3,pos_daeda_fo_fin));
+      
+        pos_daeda_nb_deb  = daedalus_cookie.indexOf("nb:");
+        pos_daeda_nb_fin = daedalus_cookie.indexOf("bo:", pos_daeda_nb_deb);
+        nb_coup = parseInt(daedalus_cookie.substring(pos_daeda_nb_deb + 3,pos_daeda_nb_fin));
+         
+        pos_daeda_bo_deb  = daedalus_cookie.indexOf("bo:");
+        pos_daeda_bo_fin = daedalus_cookie.indexOf(":fin", pos_daeda_bo_deb);
+        bousole = parseInt(daedalus_cookie.substring(pos_daeda_bo_deb + 3,pos_daeda_bo_fin));
+        
+        var attr = images_attr[0];
+        switch (attr)
+               {
+                case "0" : parent.contenu.document.image_gauche.src = fic_img_porte_ferme + ".gif"; break;
+                case "1" : parent.contenu.document.image_gauche.src = fic_img_mur + ".gif"; break;
+                case "2" : parent.contenu.document.image_gauche.src = fic_img_passage + ".gif"; break;
+                case "3" : parent.contenu.document.image_gauche.src = fic_img_porte_ouv + ".gif"; break;
+               }
+           
+        var attr = images_attr[1];
+        switch (attr)
+               {
+                case "0" : parent.contenu.document.image_face.src = fic_img_porte_ferme + ".gif"; break;
+                case "1" : parent.contenu.document.image_face.src = fic_img_mur + ".gif"; break;
+                case "2" : parent.contenu.document.image_face.src = fic_img_passage + ".gif"; break;
+                case "3" : parent.contenu.document.image_face.src = fic_img_porte_ouv + ".gif"; break;
+               }
+               
+        var attr = images_attr[2];
+        switch (attr)
+               {
+                case "0" : parent.contenu.document.image_droite.src = fic_img_porte_ferme + ".gif"; break;
+                case "1" : parent.contenu.document.image_droite.src = fic_img_mur + ".gif"; break;
+                case "2" : parent.contenu.document.image_droite.src = fic_img_passage + ".gif"; break;
+                case "3" : parent.contenu.document.image_droite.src = fic_img_porte_ouv + ".gif"; break;
+               }
+           
+      }
+     else
+      {alert("Aucune sauvegarde trouvee !!!!!");} 
+    affiche_resultat();
+   } 
