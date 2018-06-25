@@ -2,6 +2,7 @@
 <HEAD>
 <TITLE>Navigation</TITLE>
 
+<link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
 
 <link rel=stylesheet type="text/css" href="style_idaedalus.css">
